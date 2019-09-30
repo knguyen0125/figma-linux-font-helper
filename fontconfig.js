@@ -1,3 +1,4 @@
+// https://github.com/servo/libfontconfig/blob/master/fontconfig/fontconfig.h
 const FC_WEIGHT_THIN = 0;
 const FC_WEIGHT_EXTRALIGHT = 40;
 const FC_WEIGHT_ULTRALIGHT = FC_WEIGHT_EXTRALIGHT;

@@ -1,12 +1,14 @@
 const express = require('express');
 const config = require('./config');
 const FontManager = require('./fonts');
+const { cors } = require('./middlewares');
 
 // Initialize Font Manager
-const fontManager = new FontManager();
+const fontManager = new FontManager(config.FONT_DIRECTORIES);
 
 // Initialize Express
 const app = express();
+app.use(cors);
 
 app.get('/figma/font-files', (req, res) => {
   const fonts = fontManager.getFonts();
@@ -16,12 +18,7 @@ app.get('/figma/font-files', (req, res) => {
     fontFiles: fonts,
   };
 
-  res
-    .header({
-      'Access-Control-Allow-Origin': 'https://www.figma.com',
-      'Content-Type': 'application/json',
-    })
-    .send(json);
+  res.json(json);
 });
 
 app.get('/figma/font-file', (req, res) => {
@@ -30,16 +27,12 @@ app.get('/figma/font-file', (req, res) => {
   if (!fontManager.isFontExists(fontPath)) {
     res.status(500).send('Failed get fonts');
   } else {
-    res
-      .header({
-        'Access-Control-Allow-Origin': 'https://www.figma.com',
-      })
-      .sendFile(fontPath);
+    res.sendFile(fontPath);
   }
 });
 
 app.get('*', (req, res) => res.status(404).send(''));
 
-app.listen(config.PORT, '127.0.0.01', () => {
-  console.log(`Server started on port ${config.PORT}`);
+app.listen(config.HTTP_PORT, '127.0.0.1', () => {
+  console.log(`Server started on port ${config.HTTP_PORT}`);
 });
