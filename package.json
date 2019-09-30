@@ -1,14 +1,13 @@
 {
   "name": "figma-font-helper",
   "version": "1.0.0",
-  "description": "",
+  "description": "Linux Figma font helper",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Kevin Nguyen",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.17.1"
   }

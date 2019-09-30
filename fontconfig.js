@@ -31,8 +31,9 @@ const FC_WIDTH_EXPANDED = 125;
 const FC_WIDTH_EXTRAEXPANDED = 150;
 const FC_WIDTH_ULTRAEXPANDED = 200;
 
-const convertFontWeight = (fontweight) => {
-  switch (fontweight) {
+/** Convert font weight from fontconfig output to web */
+const convertFontWeight = (fontWeight) => {
+  switch (fontWeight) {
     case FC_WEIGHT_THIN:
       return 100;
     case FC_WEIGHT_ULTRALIGHT:
@@ -56,6 +57,7 @@ const convertFontWeight = (fontweight) => {
   }
 };
 
+/** Convert font width from fontconfig output to web */
 const convertFontWidth = (fontWidth) => {
   switch (fontWidth) {
     case FC_WIDTH_ULTRACONDENSED:

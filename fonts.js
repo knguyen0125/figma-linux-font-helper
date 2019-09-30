@@ -1,4 +1,3 @@
-const config = require('./config');
 const { getFontStyle } = require('./utils');
 
 class FontManager {
